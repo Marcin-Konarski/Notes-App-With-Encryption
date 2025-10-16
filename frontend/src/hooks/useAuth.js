@@ -3,11 +3,9 @@ import EmailService from '@/services/EmailService';
 import UserService from '@/services/UserService';
 import { setAccessToken } from '@/services/ApiClient';
 import { useUserContext } from '@/hooks/useUserContext';
-import useNotes from '@/hooks/useNotes';
 import { cognitoSignIn, cognitoSignUp } from '@/cryptography/AWS_Cognito/Cognito';
 
 const useAuth = () => {
-    const { fetchNotes } = useNotes();
     const { user, login, logout, publicKey } = useUserContext();
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -80,7 +78,6 @@ const useAuth = () => {
             const { username, password } = credentials;
             const cognitoResponse = await cognitoSignIn(username, password);
             login(userResponse.data);
-            fetchNotes(); // Upon login fetch user's notes
 
             if (!publicKey.current) {
                 // Fetch public key on login OR fetch already all public keys for every user - that's faster but it has to include current user's public key as well

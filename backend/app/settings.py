@@ -29,8 +29,7 @@ SECRET_KEY = environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['mk0x.com', 'www.mk0x.com', 'localhost', '127.0.0.1', 'backend']
 
 # Application definition
 

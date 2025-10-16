@@ -17,5 +17,12 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     port: 8080,
-  }
+    allowedHosts: ["mk0x.com"],
+  },
+  hmr: {
+    host: "mk0x.com",
+    port: 443,
+    protocol: "wss",
+  },
 });
+

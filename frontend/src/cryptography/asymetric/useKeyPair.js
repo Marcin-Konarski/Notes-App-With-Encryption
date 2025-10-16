@@ -24,15 +24,10 @@ const useKeyPair = () => {
                 ["wrapKey", "unwrapKey"] // Used for encrypting symmetric keys
             );
 
-            console.log(keyPair)
-
             userKeyPair.current.publicKey = keyPair.publicKey;
             userKeyPair.current.privateKey = keyPair.privateKey;
 
             const publicKey = await crypto.subtle.exportKey("jwk", keyPair.publicKey); // Export public key. TODO: Encrypt private key and only then export
-
-            console.log(userKeyPair)
-            console.log(publicKey)
 
             return {success: true, publicKey: publicKey}
         } catch (err) {
